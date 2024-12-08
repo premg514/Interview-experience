@@ -1,0 +1,69 @@
+.experience-detail {
+    max-width: 800px;
+    /* Restrict the width for readability */
+    margin: 50px auto;
+    /* Center the content vertically and horizontally */
+    padding: 20px;
+    background-color: #ffffff;
+    /* White background for content */
+    border: 1px solid #e0e0e0;
+    /* Light border for a neat appearance */
+    border-radius: 8px;
+    /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for depth */
+    font-family: Arial, sans-serif;
+    /* Clean font style */
+    color: #333333;
+    /* Dark color for good readability */
+    line-height: 1.6;
+    /* Improve text spacing for readability */
+    height:  50vh;
+}
+
+.experience-detail h1 {
+    font-size: 28px;
+    color: #4caf50;
+    /* Highlight company name with green */
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.experience-detail h3 {
+    font-size: 20px;
+    color: #333333;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.experience-detail p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-align: justify;
+    /* Align the text evenly on both sides */
+}
+
+.experience-detail strong {
+    color: #555555;
+    /* Subtle emphasis on labels */
+}
+
+@media (max-width: 768px) {
+    .experience-detail {
+        padding: 15px;
+        margin: 20px;
+        /* Smaller margin for smaller devices */
+    }
+
+    .experience-detail h1 {
+        font-size: 24px;
+    }
+
+    .experience-detail h3 {
+        font-size: 18px;
+    }
+
+    .experience-detail p {
+        font-size: 14px;
+    }
+}
