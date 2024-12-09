@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './index.css';
+import { Nav, Logo, OptionsNavLap, Option, Hamburger, OptionsNav } from './styleComponents';
 
 export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -11,30 +11,28 @@ export default function Header() {
 
     return (
         <div>
-            <nav className="nav">
+            <Nav>
                 <Link to="/">
-                    <h4 className="logo">LOGO</h4>
+                    <Logo>LOGO</Logo>
                 </Link>
 
-                {/* Hamburger Menu */}
-                <button className="hamburger" onClick={toggleMenu}>
+                <Hamburger onClick={toggleMenu}>
                     ☰
-                </button>
+                </Hamburger>
 
-                {/* Navigation Links */}
-                <div className='options-nav-lap'>
-                <h6>Learn</h6>
-                <h6>Interview preparation</h6>
-                <h6>Practice</h6>
-                <h6>Resources</h6>
-            </div>
-            </nav>
-            <div className={`options-nav ${menuOpen ? 'active' : ''}`}>
-                <h6>Learn</h6>
-                <h6>Interview preparation</h6>
-                <h6>Practice</h6>
-                <h6>Resources</h6>
-            </div>
+                <OptionsNavLap>
+                    <Option>Learn</Option>
+                    <Option>Interview preparation</Option>
+                    <Option>Practice</Option>
+                    <Option>Resources</Option>
+                </OptionsNavLap>
+            </Nav>
+            <OptionsNav className={menuOpen ? 'active' : ''}>
+                <Option>Learn</Option>
+                <Option>Interview preparation</Option>
+                <Option>Practice</Option>
+                <Option>Resources</Option>
+            </OptionsNav>
         </div>
     );
 }

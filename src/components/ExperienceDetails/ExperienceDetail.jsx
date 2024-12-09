@@ -3,26 +3,34 @@ import { useParams } from 'react-router-dom';
 import interviewExperiences from '../../Data/data';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import './index.css'
+import {
+  ExperienceDetailContainer,
+  ExperienceTitle,
+  ExperienceRole,
+  ExperienceText,
+  Highlight
+} from './styleComponents';
+
 export default function ExperienceDetail() {
-    const { id } = useParams(); // Extract the id from the URL
-    const experience = interviewExperiences.find((exp) => exp.id === parseInt(id)); // Find the matching experience
+  const { id } = useParams();
+  const experience = interviewExperiences.find((exp) => exp.id === parseInt(id));
 
-    if (!experience) {
-        return <h2>Experience not found!</h2>;
-    }
+  if (!experience) {
+    return <h2>Experience not found!</h2>;
+  }
 
-    return (
-        <div>
-            <Header />
-            <div className="experience-detail">
-                <h1>{experience.company}</h1>
-                <h3>{experience.role}</h3>
-                <p>{experience.experience}</p>
-                <p><strong>Date:</strong> {experience.date}</p>
-            </div>
-            <Footer />
-        </div>
-
-    );
+  return (
+    <div>
+      <Header />
+      <ExperienceDetailContainer>
+        <ExperienceTitle>{experience.company}</ExperienceTitle>
+        <ExperienceRole>{experience.role}</ExperienceRole>
+        <ExperienceText>{experience.experience}</ExperienceText>
+        <ExperienceText>
+          <Highlight>Date:</Highlight> {experience.date}
+        </ExperienceText>
+      </ExperienceDetailContainer>
+      <Footer />
+    </div>
+  );
 }

@@ -1,16 +1,23 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import './index.css'
+import React from 'react';
+import {
+    ExperienceCard,
+    Company,
+    Role,
+    Description,
+    Date,
+    ReadMoreLink
+} from './styleComponents';
+
 export default function ExperienceItem({ experience }) {
     return (
-        <div className="experience-card">
-            <h2 className="company">{experience.company}</h2>
-            <h4 className="role">{experience.role}</h4>
-            <p className="description">{experience.experience}</p>
-            <p className="date">Date: {experience.date}</p>
-            <Link to={`/experience/${experience.id}`} className="read-more">
+        <ExperienceCard>
+            <Company>{experience.company}</Company>
+            <Role>{experience.role}</Role>
+            <Description>{experience.experience}</Description>
+            <Date>Date: {experience.date}</Date>
+            <ReadMoreLink to={`/experience/${experience.id}`}>
                 Read More
-            </Link>
-        </div>
-    )
+            </ReadMoreLink>
+        </ExperienceCard>
+    );
 }
