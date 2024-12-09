@@ -1,3 +1,4 @@
+// styleComponents.js
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -19,7 +20,7 @@ export const ExperienceCard = styled.div`
 `;
 
 export const Company = styled.h2`
-  color: #4caf50;
+  color: black;
   font-size: 20px;
   margin-bottom: 5px;
 `;
@@ -43,10 +44,20 @@ export const Date = styled.p`
 
 export const ReadMoreLink = styled(Link)`
   text-decoration: none;
-  color: #4caf50;
-  font-weight: bold;
+  color: blue;
+  
 
   &:hover {
     text-decoration: underline;
+  }
+`;
+export const Para = styled.p`
+  color: ${props => props.color || '#555555'};
+  font-size: 14px;
+  margin-bottom: 8px;
+
+  strong {
+    color: #333333;
+    font-weight: bold;
   }
 `;

@@ -4,6 +4,7 @@ import {
     Company,
     Role,
     Description,
+    Para,
     Date,
     ReadMoreLink
 } from './styleComponents';
@@ -14,6 +15,8 @@ export default function ExperienceItem({ experience }) {
             <Company>{experience.company}</Company>
             <Role>{experience.role}</Role>
             <Description>{experience.experience}</Description>
+            <Para><strong>Rounds:</strong> {experience.rounds}</Para>
+            <Para color={experience.status=='Accepted'?'green':'red'} ><strong>Status:</strong> {experience.status}</Para>
             <Date>Date: {experience.date}</Date>
             <ReadMoreLink to={`/experience/${experience.id}`}>
                 Read More

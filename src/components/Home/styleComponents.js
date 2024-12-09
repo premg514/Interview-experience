@@ -11,7 +11,7 @@ export const AppContainer = styled.div`
 
 export const Title = styled.h1`
   text-align: center;
-  color: #4caf50;
+  color: black;
   margin-bottom: 20px;
 `;
 
@@ -73,6 +73,7 @@ export const PaginationContainer = styled.div`
 `;
 
 export const PageNumber = styled.h4`
+  color:black;
   font-size: 18px;
   font-weight: bold;
   margin: 0 10px;
@@ -85,3 +86,72 @@ export const LeftArrow = styled(FaArrowLeft)`
 font-size:15px;`
 export const RightArrow = styled(FaArrowRight)`
 font-size:15px;`
+export const Container = styled.div`
+  padding: 20px;
+  background-color: #fff;
+`;
+
+export const Heading = styled.h2`
+  font-size: 18px;
+  font-weight: bold;
+  color: #0056d2;
+  margin-bottom: 16px;
+`;
+export const CompaniesList = styled.div`
+  display: flex;
+  gap: 16px;
+  overflow: hidden; /* Prevent scrollbars from showing */
+  position: relative;
+  padding-bottom: 10px;
+
+  /* Keyframe Animation */
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Wrap content and duplicate for seamless scrolling */
+  width: 200%; /* Double the width to accommodate duplicate list */
+  animation: scroll 20s linear infinite;
+  will-change: transform;
+
+  ::-webkit-scrollbar {
+    display: none; /* Hide scrollbar */
+  }
+`;
+
+export const CompaniesWrapper = styled.div`
+  display: flex;
+  gap:8px;
+
+`;
+
+export const CompanyCard = styled.div`
+  flex: 0 0 auto;
+  width: 120px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  }
+`;
+
+
+
+export const Logo = styled.img`
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+`;

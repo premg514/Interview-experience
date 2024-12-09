@@ -1,31 +1,62 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Nav, Logo, OptionsNavLap, Option, Hamburger, OptionsNav } from './styleComponents';
+import {
+    Nav, Logo, OptionsNavLap, Option, Hamburger, OptionsNav, Searcher,
+    SearcherDiv,
+    SearchIcon,
+    Button,
+    Div,
+    Profile,
 
-export default function Header() {
+} from './styleComponents';
+
+export default function Header({ handleSearch }) {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [searchBtn, setSearchBtn] = useState(false)
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
+    };
+    const handleSearchF = (e) => {
+        handleSearch(e.target.value);
     };
 
     return (
         <div>
             <Nav>
-                <Link to="/">
-                    <Logo>LOGO</Logo>
-                </Link>
+                <Div>
+                    <Link to="/">
+                        <Logo>LOGO</Logo>
+                    </Link>
+                    <OptionsNavLap>
+                        <Option>Learn</Option>
+                        <Option>Interview preparation</Option>
+                        <Option>Practice</Option>
+                        <Option>Resources</Option>
+                    </OptionsNavLap>
+                </Div>
 
-                <Hamburger onClick={toggleMenu}>
-                    ☰
-                </Hamburger>
+                <Div>
+                    <SearcherDiv>
+                        <Button onClick={() => setSearchBtn(!searchBtn)} >
+                            <SearchIcon />
+                        </Button>
+                        {searchBtn ? <Searcher
+                            type='search'
+                            placeholder="Search by company..."
+                            onChange={handleSearchF}
+                        /> : ''}
+                    </SearcherDiv>
 
-                <OptionsNavLap>
-                    <Option>Learn</Option>
-                    <Option>Interview preparation</Option>
-                    <Option>Practice</Option>
-                    <Option>Resources</Option>
-                </OptionsNavLap>
+                    <Profile>
+                        .
+                    </Profile>
+                    <Hamburger onClick={toggleMenu}>
+                        ☰
+                    </Hamburger>
+
+
+                </Div>
             </Nav>
             <OptionsNav className={menuOpen ? 'active' : ''}>
                 <Option>Learn</Option>

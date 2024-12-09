@@ -1,16 +1,14 @@
 import React from 'react';
-import interviewExperiences from '../../Data/data';
+import interviewExperiences from '../../Data/experience';
 
 import {
     FilterSectionContainer,
     FilterLabel,
     FilterSelect,
-    Searcher,
-    SearcherDiv,
-    SearchIcon
+
 } from './styleComponents';
 
-export default function FilterSection({ onFilterChange, handleSearch }) {
+export default function FilterSection({ onFilterChange }) {
     const uniqueCompanies = [...new Set(interviewExperiences.map((exp) => exp.company))];
     const uniqueRoles = [...new Set(interviewExperiences.map((exp) => exp.role))];
 
@@ -19,20 +17,11 @@ export default function FilterSection({ onFilterChange, handleSearch }) {
         onFilterChange(name, value);
     };
 
-    const handleSearchF = (e) => {
-        handleSearch(e.target.value);
-    };
+
 
     return (
         <FilterSectionContainer>
-            <SearcherDiv>
-                <SearchIcon />
-                <Searcher 
-                    type='search' 
-                    placeholder="Search by company..." 
-                    onChange={handleSearchF} 
-                />
-            </SearcherDiv>
+
 
             <div>
                 <FilterLabel htmlFor="company-filter">Company:</FilterLabel>

@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import interviewExperiences from '../../Data/data';
 import ExperienceItem from '../ExperienceItem/ExperienceItem';
 import FilterSection from '../Filters/Filter';
+import interviewExperiences from '../../Data/experience';
+import companies from '../../Data/companies';
 import { usePaginationContext } from '../../context/PaginationContext';
-import { AppContainer, Title, ExperienceList, Button, PaginationContainer, PageNumber, LeftArrow, RightArrow } from './styleComponents';
+
+
+
+import { AppContainer, Title, ExperienceList, Button, PaginationContainer, PageNumber, LeftArrow, RightArrow, Container, Heading, CompaniesList, Logo, CompanyCard, CompaniesWrapper } from './styleComponents';
 
 export default function Home() {
+
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredData, setFilteredData] = useState(interviewExperiences);
   const { pageNum, setPageNum, pageSize, setPageSize } = usePaginationContext();
@@ -46,10 +51,23 @@ export default function Home() {
   }
   return (
     <div>
-      <Header />
+      <Header handleSearch={handleSearch} />
       <AppContainer>
         <Title>Interview Experiences</Title>
-        <FilterSection handleSearch={handleSearch} onFilterChange={handleFilterChange} />
+        <Container>
+          <Heading>Popular companies</Heading>
+          <CompaniesList>
+            <CompaniesWrapper>
+              {[...companies, ...companies, ...companies].map((company, index) => (
+                <CompanyCard key={index}>
+                  <Logo src={company.logo} alt={`${company.name} logo`} />
+                </CompanyCard>
+              ))}
+            </CompaniesWrapper>
+          </CompaniesList>
+
+        </Container>
+        <FilterSection onFilterChange={handleFilterChange} />
         <ExperienceList>
           {result.map((experience) => (
             <ExperienceItem key={experience.id} experience={experience} />
@@ -57,11 +75,11 @@ export default function Home() {
         </ExperienceList>
         <PaginationContainer>
           <Button disabled={pageNum <= 1} onClick={() => setPageNum(pageNum - 1)}>
-           <LeftArrow/>
+            <LeftArrow />
           </Button>
           <PageNumber>{pageNum}</PageNumber>
           <Button disabled={totalPages === pageNum} onClick={() => setPageNum(pageNum + 1)}>
-            <RightArrow/>
+            <RightArrow />
           </Button>
         </PaginationContainer>
       </AppContainer>
