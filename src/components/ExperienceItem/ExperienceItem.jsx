@@ -27,7 +27,7 @@ export default function ExperienceItem({ experience }) {
                     {isSelected ? <FaCheckCircle color="green" /> : <FaTimesCircle color="red" />}
                 </StatusIcon>
             </Para>
-            <Date>Date: {experience.date}</Date>
+            <Date>Date: {experience.experienceDate}</Date>
             <ReadMoreLink to={`/experience/${experience.id}`}>
                 Read More
             </ReadMoreLink>
