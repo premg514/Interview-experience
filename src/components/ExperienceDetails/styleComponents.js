@@ -12,6 +12,7 @@ export const ExperienceDetailContainer = styled.div`
   color: #333333;
   line-height: 1.6;
   height: 50vh;
+  overflow-y:scroll;
 
   @media (max-width: 768px) {
     padding: 15px;
@@ -104,4 +105,29 @@ export const SimilarExperienceItem = styled.div`
     font-size: 14px;
     color: #555555;
   }
+`;
+
+export const ExperienceQn = styled.h3`
+  font-size: 20px;
+  color: #333333;
+  margin-bottom: 15px;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
+`;
+export const ExperienceTextLi = styled.li`
+  font-size: 16px;
+  margin-bottom: 10px;
+  text-align: justify;
+ color: ${props => props.color || '#555555'};
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+`;
+export const StatusIcon = styled.span`
+  margin-left: 8px;
+  font-size: 16px;
+  vertical-align: middle;
 `;

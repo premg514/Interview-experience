@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import interviewExperiences from '../../Data/experience';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 import {
   LayoutContainer,
   ExperienceDetailContainer,
@@ -12,6 +13,9 @@ import {
   Highlight,
   SimilarExperiencesContainer,
   SimilarExperienceItem,
+  ExperienceQn,
+  ExperienceTextLi,
+  StatusIcon
 } from './styleComponents';
 
 export default function ExperienceDetail() {
@@ -22,7 +26,8 @@ export default function ExperienceDetail() {
     return <h2>Experience not found!</h2>;
   }
 
-  // Filter similar experiences based on the role
+  const isSelected = experience.status === 'SELECTED';
+
   const similarExperiences = interviewExperiences.filter(
     (exp) => exp.role === experience.role && exp.id !== experience.id
   );
@@ -42,11 +47,21 @@ export default function ExperienceDetail() {
             <Highlight>Candidate:</Highlight> {experience.candidate}
           </ExperienceText>
           <ExperienceText>
+            <Highlight>Experience in interview:</Highlight> {experience.details.description}
+          </ExperienceText>
+          <ExperienceText>
             <Highlight>Date:</Highlight> {experience.experienceDate}
           </ExperienceText>
-          <ExperienceText color={experience.status === 'Accepted' ? 'green' : 'red'}>
+          <ExperienceText color={experience.status === 'SELECTED' ? 'green' : 'red'}>
             <Highlight>Status:</Highlight> {experience.status}
+            <StatusIcon>
+              {isSelected ? <FaCheckCircle color="green" /> : <FaTimesCircle color="red" />}
+            </StatusIcon>
           </ExperienceText>
+          <ExperienceQn>Questions that comapany have asked candidate</ExperienceQn>
+          {experience.details.questions.map(each => (
+            <ExperienceTextLi>{each}</ExperienceTextLi>
+          ))}
         </ExperienceDetailContainer>
 
         {/* Similar Experiences */}

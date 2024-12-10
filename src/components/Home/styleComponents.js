@@ -48,7 +48,9 @@ export const Button = styled.button`
   margin: 0 5px;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
 
   &:disabled {
     background-color: #cccccc;
@@ -57,13 +59,37 @@ export const Button = styled.button`
 
   &:hover:not(:disabled) {
     background-color: #0056b3;
+    transform: scale(1.1); /* Slightly increase size on hover */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  &:hover:not(:disabled)::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: skewX(-30deg);
+    animation: shine 0.5s ease-out forwards;
   }
 
   @media (max-width: 480px) {
     padding: 6px 12px;
     font-size: 14px;
   }
+
+  @keyframes shine {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
 `;
+
 
 export const PaginationContainer = styled.div`
   display: flex;

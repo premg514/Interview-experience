@@ -61,3 +61,9 @@ export const Para = styled.p`
     font-weight: bold;
   }
 `;
+export const StatusIcon = styled.span`
+  margin-left: 8px;
+  font-size: 16px;
+  vertical-align: middle;
+`;
+
