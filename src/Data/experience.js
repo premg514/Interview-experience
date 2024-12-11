@@ -1,344 +1,308 @@
 const interviewExperiences = [
     {
-        id: 1,
-        company: "Google",
-        rounds: "3 rounds | DS & Algo",
-        candidate: "Anonymous",
-        experienceDate: "Jan 2024",
-        role: "Software Engineer",
-        status: "SELECTED",
-        details: {
-            description: "Focused on data structures and algorithm problems with an emphasis on optimization and scalability.",
-            questions: [
-                "Explain the concept of a trie and implement a function to search a word in it.",
-                "Design an algorithm to merge overlapping intervals.",
-                "Optimize a given sorting algorithm for large datasets."
-            ],
-        },
+      id: 1,
+      company: 'Google',
+      role: 'Software Engineer',
+      rounds: 4,
+      candidate: 'Alice',
+      status: 'SELECTED',
+      interviewType: 'online',
+      experienceDate: '2024-12-01',
+      packageCtc: '30 LPA',
+      details: {
+        description: 'Challenging but rewarding experience. Focused on algorithms.',
+        questions: ['Explain Dijkstra’s Algorithm', 'Design a scalable chat application']
+      }
     },
     {
-        id: 2,
-        company: "Amazon",
-        rounds: "4 rounds | JS, React, and System Design",
-        candidate: "Anonymous",
-        experienceDate: "Feb 2024",
-        role: "Frontend Developer",
-        status: "SELECTED",
-        details: {
-            description: "Covered JavaScript fundamentals, ReactJS concepts, and system design problems for scalable UIs.",
-            questions: [
-                "What are closures in JavaScript, and provide a practical example?",
-                "How would you optimize a React application with multiple states?",
-                "Design a dynamic dashboard with real-time updates using React."
-            ],
-        },
+      id: 2,
+      company: 'Microsoft',
+      role: 'Data Scientist',
+      rounds: 3,
+      candidate: 'Bob',
+      status: 'REJECTED',
+      interviewType: 'offline',
+      experienceDate: '2024-11-20',
+      packageCtc: '25 LPA',
+      details: {
+        description: 'Questions focused on machine learning models and SQL.',
+        questions: ['Explain overfitting and how to prevent it', 'Write a SQL query for ranking sales']
+      }
     },
     {
-        id: 3,
-        company: "Microsoft",
-        rounds: "2 rounds | APIs and Microservices",
-        candidate: "Anonymous",
-        experienceDate: "Mar 2024",
-        role: "Backend Developer",
-        status: "REJECTED",
-        details: {
-            description: "Focused on creating scalable APIs and managing distributed systems.",
-            questions: [
-                "Implement token-based authentication for an API.",
-                "Explain the CAP theorem in the context of microservices.",
-                "How would you handle retries for failed API requests?"
-            ],
-        },
+      id: 3,
+      company: 'Amazon',
+      role: 'Backend Developer',
+      rounds: 5,
+      candidate: 'Charlie',
+      status: 'SELECTED',
+      interviewType: 'online',
+      experienceDate: '2024-10-15',
+      packageCtc: '28 LPA',
+      details: {
+        description: 'Great experience with a focus on scalability and API design.',
+        questions: ['Design a RESTful API for an e-commerce platform', 'Explain eventual consistency']
+      }
     },
     {
-        id: 4,
-        company: "Meta",
-        rounds: "3 rounds | Python, SQL, and ML models",
-        candidate: "Anonymous",
-        experienceDate: "Jan 2024",
-        role: "Data Scientist",
-        status: "SELECTED",
-        details: {
-            description: "Explored Python scripting, SQL queries, and machine learning techniques.",
-            questions: [
-                "Write a Python function to calculate the F1 score of a model.",
-                "Create an SQL query to find the second highest salary from a table.",
-                "Discuss the pros and cons of using k-means clustering for an image segmentation task."
-            ],
-        },
+      id: 4,
+      company: 'Facebook',
+      role: 'Frontend Developer',
+      rounds: 4,
+      candidate: 'Diana',
+      status: 'SELECTED',
+      interviewType: 'offline',
+      experienceDate: '2024-12-03',
+      packageCtc: '35 LPA',
+      details: {
+        description: 'Focus on React and user interface optimization.',
+        questions: ['Optimize a large React application', 'Explain the virtual DOM']
+      }
     },
     {
-        id: 5,
-        company: "Apple",
-        rounds: "3 rounds | CI/CD pipelines and AWS services",
-        candidate: "Anonymous",
-        experienceDate: "Feb 2024",
-        role: "DevOps Engineer",
-        status: "REJECTED",
-        details: {
-            description: "Emphasized building automated pipelines and leveraging cloud services for deployments.",
-            questions: [
-                "Design a CI/CD pipeline using Jenkins for a React application.",
-                "What is the role of Infrastructure as Code in modern DevOps?",
-                "How do you secure sensitive data in a cloud environment?"
-            ],
-        },
+      id: 5,
+      company: 'Tesla',
+      role: 'DevOps Engineer',
+      rounds: 3,
+      candidate: 'Evan',
+      status: 'REJECTED',
+      interviewType: 'online',
+      experienceDate: '2024-11-15',
+      packageCtc: '22 LPA',
+      details: {
+        description: 'Focus on CI/CD pipelines and infrastructure as code.',
+        questions: ['Explain Kubernetes architecture', 'Set up a Jenkins pipeline']
+      }
     },
     {
-        id: 6,
-        company: "Tesla",
-        rounds: "2 rounds | Neural networks and deployment strategies",
-        candidate: "Anonymous",
-        experienceDate: "Mar 2024",
-        role: "AI Engineer",
-        status: "SELECTED",
-        details: {
-            description: "Focused on deep learning architectures and deploying AI models in production.",
-            questions: [
-                "Explain the difference between CNN and RNN.",
-                "How would you handle data imbalance in training datasets?",
-                "What are the steps to deploy a trained model in a Kubernetes cluster?"
-            ],
-        },
+      id: 6,
+      company: 'Apple',
+      role: 'iOS Developer',
+      rounds: 4,
+      candidate: 'Fiona',
+      status: 'SELECTED',
+      interviewType: 'offline',
+      experienceDate: '2024-12-08',
+      packageCtc: '32 LPA',
+      details: {
+        description: 'Questions on Swift, UI development, and Apple’s ecosystem.',
+        questions: ['Explain Auto Layout in Swift', 'Build a sample weather app UI']
+      }
     },
     {
-        id: 7,
-        company: "Netflix",
-        rounds: "3 rounds | Frontend and Backend Scalability",
-        candidate: "Anonymous",
-        experienceDate: "Jan 2024",
-        role: "Full Stack Developer",
-        status: "SELECTED",
-        details: {
-            description: "Focused on developing scalable and responsive full-stack applications.",
-            questions: [
-                "How do you optimize frontend performance for video streaming?",
-                "Explain the benefits of server-side rendering for React applications.",
-                "Design a microservice for user authentication with JWT."
-            ],
-        },
+      id: 7,
+      company: 'IBM',
+      role: 'AI Researcher',
+      rounds: 3,
+      candidate: 'George',
+      status: 'SELECTED',
+      interviewType: 'online',
+      experienceDate: '2024-11-25',
+      packageCtc: '27 LPA',
+      details: {
+        description: 'Focus on neural networks and AI ethics.',
+        questions: ['Explain transformers in NLP', 'How to mitigate bias in AI models']
+      }
     },
     {
-        id: 8,
-        company: "Uber",
-        rounds: "3 rounds | Scenario-based and Case Studies",
-        candidate: "Anonymous",
-        experienceDate: "Feb 2024",
-        role: "Product Manager",
-        status: "SELECTED",
-        details: {
-            description: "Centered around product strategy and solving real-world case studies.",
-            questions: [
-                "Propose a strategy to improve driver retention rates.",
-                "How would you prioritize features for a ride-sharing app?",
-                "Discuss how you would handle a sudden server outage during peak hours."
-            ],
-        },
+      id: 8,
+      company: 'Intel',
+      role: 'Embedded Systems Engineer',
+      rounds: 3,
+      candidate: 'Hannah',
+      status: 'REJECTED',
+      interviewType: 'offline',
+      experienceDate: '2024-10-10',
+      packageCtc: '18 LPA',
+      details: {
+        description: 'In-depth questions on microcontrollers and real-time systems.',
+        questions: ['Explain the concept of interrupt handling', 'Write a simple ISR']
+      }
     },
     {
-        id: 9,
-        company: "Spotify",
-        rounds: "2 rounds | Portfolio Review and Usability Testing",
-        candidate: "Anonymous",
-        experienceDate: "Mar 2024",
-        role: "UX Designer",
-        status: "SELECTED",
-        details: {
-            description: "Explored creative problem-solving and user-centered design principles.",
-            questions: [
-                "Redesign the search bar feature for better usability.",
-                "How would you conduct a usability test for a new music discovery feature?",
-                "Explain your approach to creating a color palette for accessibility."
-            ],
-        },
+      id: 9,
+      company: 'Oracle',
+      role: 'Database Administrator',
+      rounds: 3,
+      candidate: 'Ian',
+      status: 'SELECTED',
+      interviewType: 'online',
+      experienceDate: '2024-11-01',
+      packageCtc: '24 LPA',
+      details: {
+        description: 'Focused on database optimization and query performance.',
+        questions: ['How to optimize a slow query', 'Explain ACID properties']
+      }
     },
     {
-        id: 10,
-        company: "Salesforce",
-        rounds: "3 rounds | Cloud Architecture",
-        candidate: "Anonymous",
-        experienceDate: "Feb 2024",
-        role: "Cloud Engineer",
-        status: "SELECTED",
-        details: {
-            description: "Focused on cloud infrastructure design and optimization for Salesforce services.",
-            questions: [
-                "Design a multi-region architecture for a global application.",
-                "What are the advantages of serverless computing?",
-                "How do you ensure high availability in a cloud environment?"
-            ],
-        },
+      id: 10,
+      company: 'Cisco',
+      role: 'Network Engineer',
+      rounds: 4,
+      candidate: 'Jane',
+      status: 'SELECTED',
+      interviewType: 'offline',
+      experienceDate: '2024-11-18',
+      packageCtc: '26 LPA',
+      details: {
+        description: 'Focus on networking protocols and troubleshooting.',
+        questions: ['Explain OSPF and BGP', 'How to debug a network bottleneck']
+      }
     },
-    {
-        id: 11,
-        company: "Intel",
-        rounds: "4 rounds | Embedded Systems and C",
-        candidate: "Anonymous",
-        experienceDate: "Mar 2024",
-        role: "Embedded Systems Engineer",
-        status: "SELECTED",
-        details: {
-            description: "Emphasized low-level programming and real-time systems.",
-            questions: [
-                "Write a C program to implement a simple queue using arrays.",
-                "Explain interrupt handling in embedded systems.",
-                "Design a real-time system for sensor data processing."
-            ],
+      
+        {
+          id: 11,
+          company: 'PayPal',
+          role: 'Full-Stack Developer',
+          rounds: 5,
+          candidate: 'Kevin',
+          status: 'SELECTED',
+          interviewType: 'online',
+          experienceDate: '2024-10-30',
+          packageCtc: '29 LPA',
+          details: {
+            description: 'Focus on MERN stack and system design.',
+            questions: ['Design a payment gateway system', 'Explain the lifecycle of a React component']
+          }
         },
-    },
-    {
-        id: 12,
-        company: "Oracle",
-        rounds: "3 rounds | SQL and DBMS",
-        candidate: "Anonymous",
-        experienceDate: "Jan 2024",
-        role: "Database Administrator",
-        status: "SELECTED",
-        details: {
-            description: "Covered advanced database management and query optimization.",
-            questions: [
-                "How would you normalize a database to the 3rd normal form?",
-                "Optimize an SQL query for retrieving hierarchical data.",
-                "Explain the concept of ACID in transactions."
-            ],
+        {
+          id: 12,
+          company: 'Adobe',
+          role: 'UI/UX Designer',
+          rounds: 4,
+          candidate: 'Laura',
+          status: 'REJECTED',
+          interviewType: 'offline',
+          experienceDate: '2024-12-05',
+          packageCtc: '21 LPA',
+          details: {
+            description: 'Focus on user experience design and prototyping tools.',
+            questions: ['Create a prototype for a shopping app', 'Explain the importance of accessibility']
+          }
         },
-    },
-    {
-        id: 13,
-        company: "Adobe",
-        rounds: "3 rounds | Algorithms and Design",
-        candidate: "Anonymous",
-        experienceDate: "Feb 2024",
-        role: "Software Engineer",
-        status: "SELECTED",
-        details: {
-            description: "Focused on algorithmic problem-solving and system design.",
-            questions: [
-                "How would you implement LRU Cache in JavaScript?",
-                "Design a collaborative whiteboard application.",
-                "What is your approach to writing scalable code for large systems?"
-            ],
+        {
+          id: 13,
+          company: 'Twitter',
+          role: 'Backend Developer',
+          rounds: 3,
+          candidate: 'Michael',
+          status: 'SELECTED',
+          interviewType: 'online',
+          experienceDate: '2024-11-10',
+          packageCtc: '31 LPA',
+          details: {
+            description: 'In-depth questions on API performance and caching.',
+            questions: ['Design a rate limiter', 'Explain the differences between Redis and Memcached']
+          }
         },
-    },
-    {
-        id: 14,
-        company: "Green Apple Solutions Pvt Ltd",
-        rounds: "3 rounds | 13 Coding Problems",
-        candidate: "Anonymous",
-        experienceDate: "Nov 2024",
-        role: "Associate Software Engineer",
-        status: "REJECTED",
-        details: {
-            description: "Focused entirely on solving multiple coding problems in a limited time.",
-            questions: [
-                "Find the longest substring without repeating characters.",
-                "Sort an array using quick sort and explain the time complexity.",
-                "Write a program to detect a cycle in a graph using DFS."
-            ],
+        {
+          id: 14,
+          company: 'LinkedIn',
+          role: 'Data Engineer',
+          rounds: 4,
+          candidate: 'Nina',
+          status: 'SELECTED',
+          interviewType: 'offline',
+          experienceDate: '2024-10-22',
+          packageCtc: '33 LPA',
+          details: {
+            description: 'Focus on ETL pipelines and big data technologies.',
+            questions: ['Explain the Hadoop ecosystem', 'Design a data ingestion pipeline']
+          }
         },
-    },
-    {
-        id: 15,
-        company: "Flipkart",
-        rounds: "3 rounds | Debugging and Manual Testing",
-        candidate: "Anonymous",
-        experienceDate: "Feb 2024",
-        role: "Quality Analyst",
-        status: "SELECTED",
-        details: {
-            description: "Focused on identifying bugs and suggesting improvements in manual testing scenarios.",
-            questions: [
-                "How do you approach debugging a complex application?",
-                "Explain the steps in creating a test case for a shopping cart feature.",
-                "Describe how you would conduct regression testing for a major release."
-            ],
+        {
+          id: 15,
+          company: 'Salesforce',
+          role: 'Cloud Engineer',
+          rounds: 5,
+          candidate: 'Oscar',
+          status: 'REJECTED',
+          interviewType: 'online',
+          experienceDate: '2024-12-07',
+          packageCtc: '28 LPA',
+          details: {
+            description: 'Focus on cloud platforms, scalability, and deployment.',
+            questions: ['Compare AWS and Azure', 'How to deploy a multi-region app']
+          }
         },
-    },
-    {
-        id: 16,
-        company: "LinkedIn",
-        rounds: "2 rounds | Behavioral and Situational",
-        candidate: "Anonymous",
-        experienceDate: "Feb 2024",
-        role: "Technical Recruiter",
-        status: "SELECTED",
-        details: {
-            description: "Covered interpersonal skills and technical recruitment strategies.",
-            questions: [
-                "How would you handle a candidate's counteroffer situation?",
-                "What steps do you take to ensure a positive interview experience?",
-                "Describe a situation where you successfully closed a critical hire."
-            ],
+        {
+          id: 16,
+          company: 'Netflix',
+          role: 'Site Reliability Engineer',
+          rounds: 5,
+          candidate: 'Paul',
+          status: 'SELECTED',
+          interviewType: 'offline',
+          experienceDate: '2024-11-15',
+          packageCtc: '36 LPA',
+          details: {
+            description: 'Focus on system reliability, monitoring, and incident response.',
+            questions: ['Design a system to handle outages', 'Explain chaos engineering']
+          }
         },
-    },
-    {
-        id: 17,
-        company: "Snapchat",
-        rounds: "3 rounds | Android Optimization",
-        candidate: "Anonymous",
-        experienceDate: "Feb 2024",
-        role: "Android Developer",
-        status: "SELECTED",
-        details: {
-            description: "Focused on optimizing Android applications for performance and resource management.",
-            questions: [
-                "How do you reduce memory leaks in Android applications?",
-                "Optimize the loading time of images in a RecyclerView.",
-                "What are the best practices for battery-efficient Android development?"
-            ],
+        {
+          id: 17,
+          company: 'Spotify',
+          role: 'Machine Learning Engineer',
+          rounds: 4,
+          candidate: 'Quinn',
+          status: 'SELECTED',
+          interviewType: 'online',
+          experienceDate: '2024-10-18',
+          packageCtc: '34 LPA',
+          details: {
+            description: 'Focus on recommendation systems and ML pipelines.',
+            questions: ['Explain collaborative filtering', 'Design a music recommendation engine']
+          }
         },
-    },
-    {
-        id: 18,
-        company: "IBM",
-        rounds: "3 rounds | Machine Learning Models",
-        candidate: "Anonymous",
-        experienceDate: "Mar 2024",
-        role: "Research Scientist",
-        status: "SELECTED",
-        details: {
-            description: "Explored building, training, and validating machine learning models.",
-            questions: [
-                "Explain the difference between supervised and unsupervised learning.",
-                "How would you improve the accuracy of a classification model?",
-                "Write Python code to implement a logistic regression model."
-            ],
+        {
+          id: 18,
+          company: 'Zomato',
+          role: 'Product Manager',
+          rounds: 4,
+          candidate: 'Rachel',
+          status: 'REJECTED',
+          interviewType: 'offline',
+          experienceDate: '2024-12-01',
+          packageCtc: '23 LPA',
+          details: {
+            description: 'Focus on product lifecycle and market analysis.',
+            questions: ['Design a feature for user reviews', 'How to measure product success']
+          }
         },
-    },
-    {
-        id: 19,
-        company: "Samsung",
-        rounds: "3 rounds | Kotlin and Android Development",
-        candidate: "Anonymous",
-        experienceDate: "Feb 2024",
-        role: "Mobile Developer",
-        status: "SELECTED",
-        details: {
-            description: "Covered advanced Android development using Kotlin and new Android APIs.",
-            questions: [
-                "What are the benefits of using Kotlin over Java for Android development?",
-                "Design an Android app that fetches and displays data from a REST API.",
-                "Explain how to handle multiple threads in Android."
-            ],
+        {
+          id: 19,
+          company: 'Uber',
+          role: 'Frontend Developer',
+          rounds: 3,
+          candidate: 'Sam',
+          status: 'SELECTED',
+          interviewType: 'online',
+          experienceDate: '2024-11-28',
+          packageCtc: '27 LPA',
+          details: {
+            description: 'Focus on JavaScript frameworks and dynamic UI.',
+            questions: ['Optimize a React app for performance', 'Explain event delegation']
+          }
         },
-    },
-    {
-        id: 20,
-        company: "Walmart Labs",
-        rounds: "4 rounds | System Design and Scalability",
-        candidate: "Anonymous",
-        experienceDate: "Mar 2024",
-        role: "Software Engineer",
-        status: "SELECTED",
-        details: {
-            description: "Focused on designing scalable and efficient systems for e-commerce applications.",
-            questions: [
-                "Design a scalable order management system for an online store.",
-                "Explain how you would handle database sharding for a high-traffic website.",
-                "What caching strategies would you use for frequently accessed data?"
-            ],
-        },
-    },
-    
-];
+        {
+          id: 20,
+          company: 'Flipkart',
+          role: 'Operations Manager',
+          rounds: 4,
+          candidate: 'Tina',
+          status: 'SELECTED',
+          interviewType: 'offline',
+          experienceDate: '2024-10-31',
+          packageCtc: '26 LPA',
+          details: {
+            description: 'Focus on supply chain optimization and team management.',
+            questions: ['How to optimize last-mile delivery', 'Describe a team conflict you resolved']
+          }
+        }
+      
+      
+  ];
+  
 export default interviewExperiences;
+

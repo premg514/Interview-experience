@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import ExperienceItem from '../ExperienceItem/ExperienceItem';
@@ -6,33 +6,46 @@ import FilterSection from '../Filters/Filter';
 import interviewExperiences from '../../Data/experience';
 import companies from '../../Data/companies';
 import { usePaginationContext } from '../../context/PaginationContext';
+import { FaArrowCircleUp } from "react-icons/fa";
 
 
-
-import { AppContainer, Title, ExperienceList, Button, PaginationContainer, PageNumber, LeftArrow, RightArrow, Container, Heading, CompaniesList, Logo, CompanyCard, CompaniesWrapper } from './styleComponents';
+import { AppContainer, Title, ExperienceList, Button, PaginationContainer, PageNumber, LeftArrow, RightArrow, Container, Heading, CompaniesList, Logo, CompanyCard, CompaniesWrapper, ScrollToTopButton } from './styleComponents';
 
 export default function Home() {
 
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredData, setFilteredData] = useState(interviewExperiences);
   const { pageNum, setPageNum, pageSize, setPageSize } = usePaginationContext();
+  const [isTop, setIsTop] = useState(false);
+  const [isTopText, setIsTopText] = useState(false)
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  const checkScrollPosition = () => {
+    if (window.scrollY > 200) {
+      setIsTop(true);
+    } else {
+      setIsTop(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', checkScrollPosition);
+    return () => {
+      window.removeEventListener('scroll', checkScrollPosition);
+    };
+  }, []);
 
   const handleFilterChange = (filterName, filterValue) => {
     let filtered = interviewExperiences;
 
-    // Apply company filter
     if (filterName === 'company') {
       filtered = filterValue === 'all' ? interviewExperiences : filtered.filter((exp) => exp.company === filterValue);
     }
 
-    // Apply role filter
     if (filterName === 'role') {
       filtered = filterValue === 'all' ? filtered : filtered.filter((exp) => exp.role === filterValue);
     }
-
-    // Apply search term filter
-
-
     setFilteredData(filtered);
   };
 
@@ -82,6 +95,11 @@ export default function Home() {
             <RightArrow />
           </Button>
         </PaginationContainer>
+        {isTop && <ScrollToTopButton onMouseEnter={()=>setIsTopText(true)} onMouseLeave={()=>setIsTopText(false)} onClick={scrollToTop}>
+          <FaArrowCircleUp />
+          {isTopText&&<p>Move to top</p>}
+        </ScrollToTopButton>}
+
       </AppContainer>
       <Footer />
     </div>

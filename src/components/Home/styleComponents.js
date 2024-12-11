@@ -181,3 +181,26 @@ export const Logo = styled.img`
   max-height: 80%;
   object-fit: contain;
 `;
+
+
+
+export const ScrollToTopButton = styled.button`
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #3bb6eb;
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #055d82;
+    
+  }
+`;

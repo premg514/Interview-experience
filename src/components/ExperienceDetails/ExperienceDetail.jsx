@@ -4,6 +4,7 @@ import interviewExperiences from '../../Data/experience';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
+
 import {
   LayoutContainer,
   ExperienceDetailContainer,
@@ -15,7 +16,9 @@ import {
   SimilarExperienceItem,
   ExperienceQn,
   ExperienceTextLi,
-  StatusIcon
+  StatusIcon,
+  StyledVideoSlashIcon,
+  StyledVideoIcon
 } from './styleComponents';
 
 export default function ExperienceDetail() {
@@ -38,13 +41,16 @@ export default function ExperienceDetail() {
       <LayoutContainer>
         {/* Main Experience Detail */}
         <ExperienceDetailContainer>
-          <ExperienceTitle>{experience.company}</ExperienceTitle>
+          <ExperienceTitle>{experience.company} interview experience</ExperienceTitle>
           <ExperienceRole>{experience.role}</ExperienceRole>
           <ExperienceText>
             <Highlight>Rounds:</Highlight> {experience.rounds}
           </ExperienceText>
           <ExperienceText>
             <Highlight>Candidate:</Highlight> {experience.candidate}
+          </ExperienceText>
+          <ExperienceText>
+            <Highlight>Package: </Highlight> {experience.packageCtc}
           </ExperienceText>
           <ExperienceText>
             <Highlight>Experience in interview:</Highlight> {experience.details.description}
@@ -57,6 +63,10 @@ export default function ExperienceDetail() {
             <StatusIcon>
               {isSelected ? <FaCheckCircle color="green" /> : <FaTimesCircle color="red" />}
             </StatusIcon>
+          </ExperienceText>
+          <ExperienceText>
+            <Highlight>Interview type: </Highlight> {experience.interviewType}
+            {experience.interviewType === 'online' ? <StyledVideoIcon /> : <StyledVideoSlashIcon />}
           </ExperienceText>
           <ExperienceQn>Questions that comapany have asked candidate</ExperienceQn>
           {experience.details.questions.map(each => (
