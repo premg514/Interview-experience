@@ -7,20 +7,26 @@ import interviewExperiences from '../../Data/experience';
 import companies from '../../Data/companies';
 import { usePaginationContext } from '../../context/PaginationContext';
 import { FaArrowCircleUp } from "react-icons/fa";
-
-
-import { AppContainer, Title, ExperienceList, Button, PaginationContainer, PageNumber, LeftArrow, RightArrow, Container, Heading, CompaniesList, Logo, CompanyCard, CompaniesWrapper, ScrollToTopButton } from './styleComponents';
+import { Div,AppContainer, Title, ExperienceList, Button, PaginationContainer, PageNumber, LeftArrow, RightArrow, Container, Heading, CompaniesList, Logo, CompanyCard, ScrollToTopButton, Para, NotFoundDiv } from './styleComponents';
 
 export default function Home() {
-
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredData, setFilteredData] = useState(interviewExperiences);
+  const [isFilterFound, setIsFilterFound] = useState(true);
+  const [filters, setFilters] = useState({
+    company: 'all',
+    role: 'all',
+  });
+  const [availableRoles, setAvailableRoles] = useState([...new Set(interviewExperiences.map((exp) => exp.role))]);
+
   const { pageNum, setPageNum, pageSize, setPageSize } = usePaginationContext();
   const [isTop, setIsTop] = useState(false);
-  const [isTopText, setIsTopText] = useState(false)
+  const [isTopText, setIsTopText] = useState(false);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+  };
+
   const checkScrollPosition = () => {
     if (window.scrollY > 200) {
       setIsTop(true);
@@ -37,22 +43,37 @@ export default function Home() {
   }, []);
 
   const handleFilterChange = (filterName, filterValue) => {
-    let filtered = interviewExperiences;
+    let filteredData = interviewExperiences;
 
     if (filterName === 'company') {
-      filtered = filterValue === 'all' ? interviewExperiences : filtered.filter((exp) => exp.company === filterValue);
+      filteredData = filterValue === 'all' ? interviewExperiences : filteredData.filter(exp => exp.company === filterValue);
+
+      setFilters(prevFilters => ({
+        ...prevFilters,
+        role: 'all', // Reset role filter when company changes
+      }));
     }
 
     if (filterName === 'role') {
-      filtered = filterValue === 'all' ? filtered : filtered.filter((exp) => exp.role === filterValue);
+      filteredData = filters.company === 'all'
+        ? interviewExperiences
+        : interviewExperiences.filter(exp => exp.company === filters.company);
+
+      filteredData = filterValue === 'all' ? filteredData : filteredData.filter(exp => exp.role === filterValue);
     }
-    setFilteredData(filtered);
+
+    setFilters(prevFilters => ({
+      ...prevFilters,
+      [filterName]: filterValue,
+    }));
+
+    setFilteredData(filteredData);
+    setIsFilterFound(filteredData.length > 0); // Check if results exist
   };
 
   const handleSearch = (input) => {
     setSearchTerm(input);
   };
-
 
   const sidx = (pageNum - 1) * pageSize;
   const eidx = sidx + pageSize;
@@ -62,46 +83,66 @@ export default function Home() {
   if (searchTerm) {
     result = result.filter((exp) => exp.company.toLowerCase().includes(searchTerm.toLowerCase()));
   }
+
   return (
-    <div>
+    <Div>
       <Header handleSearch={handleSearch} />
       <AppContainer>
         <Title>Interview Experiences</Title>
         <Container>
           <Heading>Popular companies</Heading>
           <CompaniesList>
-            <CompaniesWrapper>
-              {[...companies, ...companies, ...companies].map((company, index) => (
+            <div className="scroll-content">
+              {[...companies, ...companies].map((company, index) => (
                 <CompanyCard key={index}>
                   <Logo src={company.logo} alt={`${company.name} logo`} />
                 </CompanyCard>
               ))}
-            </CompaniesWrapper>
+            </div>
           </CompaniesList>
 
         </Container>
-        <FilterSection onFilterChange={handleFilterChange} />
-        <ExperienceList>
-          {result.map((experience) => (
-            <ExperienceItem key={experience.id} experience={experience} />
-          ))}
-        </ExperienceList>
-        <PaginationContainer>
-          <Button disabled={pageNum <= 1} onClick={() => setPageNum(pageNum - 1)}>
-            <LeftArrow />
-          </Button>
-          <PageNumber>{pageNum}</PageNumber>
-          <Button disabled={totalPages === pageNum} onClick={() => setPageNum(pageNum + 1)}>
-            <RightArrow />
-          </Button>
-        </PaginationContainer>
-        {isTop && <ScrollToTopButton onMouseEnter={()=>setIsTopText(true)} onMouseLeave={()=>setIsTopText(false)} onClick={scrollToTop}>
-          <FaArrowCircleUp />
-          {isTopText&&<p>Move to top</p>}
-        </ScrollToTopButton>}
 
+        <FilterSection
+          onFilterChange={handleFilterChange}
+          selectedFilters={filters}
+
+        />
+        {result.length > 0 ? (<div> <ExperienceList>
+          {
+            result.map((experience) => (
+              <ExperienceItem key={experience.id} experience={experience} />
+            )
+            )}
+        </ExperienceList>
+
+          <PaginationContainer>
+            <Button disabled={pageNum <= 1} onClick={() => setPageNum(pageNum - 1)}>
+              <LeftArrow />
+            </Button>
+            <PageNumber>{pageNum}</PageNumber>
+            <Button disabled={totalPages === pageNum} onClick={() => setPageNum(pageNum + 1)}>
+              <RightArrow />
+            </Button>
+          </PaginationContainer></div>) : (
+          <NotFoundDiv>
+            <Para>No data found for the selected filters. Please adjust your selection.</Para>
+            <Button onClick={() => {
+              setFilteredData(interviewExperiences)
+              setFilters({ company: 'all', role: 'all' })
+            }} >Reset filters</Button>
+          </NotFoundDiv>
+        )}
+
+
+        {isTop && (
+          <ScrollToTopButton onMouseEnter={() => setIsTopText(true)} onMouseLeave={() => setIsTopText(false)} onClick={scrollToTop}>
+            <FaArrowCircleUp />
+            {isTopText && <p>Move to top</p>}
+          </ScrollToTopButton>
+        )}
       </AppContainer>
       <Footer />
-    </div>
+    </Div>
   );
 }

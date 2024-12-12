@@ -14,7 +14,7 @@ export const ExperienceDetailContainer = styled.div`
   height: auto;
   overflow-y: auto;
   margin: 0 auto;
-  background: linear-gradient(to top left, #ffffff, #f7f7f7);
+  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(230, 245, 255, 1) 60%, rgba(200, 230, 250, 1) 100%);
   
   @media (max-width: 768px) {
     padding: 20px;

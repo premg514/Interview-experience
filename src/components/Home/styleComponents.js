@@ -3,17 +3,30 @@ import styled from 'styled-components';
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 
+export const Div = styled.div`
+display:flex;
+flex-direction:column;
+justify-content:center;
+
+`
 export const AppContainer = styled.div`
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
-  padding: 20px;
+  padding: 10px;
+background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(230, 245, 255, 1) 60%, rgba(200, 230, 250, 1) 100%);
+@media (max-width: 480px) {
+  padding: 5px;
+}
+
 `;
 
 export const Title = styled.h1`
+  font-size: clamp(1.5rem, 2vw, 3rem); 
   text-align: center;
   color: black;
   margin-bottom: 20px;
 `;
+
 
 export const ExperienceList = styled.div`
   display: grid;
@@ -23,7 +36,10 @@ export const ExperienceList = styled.div`
   margin: 0 auto;
   max-width: 100%;
   box-sizing: border-box;
-
+ 
+@media(max-width:480px){
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 15px;
@@ -47,7 +63,7 @@ export const Button = styled.button`
   padding: 8px 16px;
   margin: 0 5px;
   cursor: pointer;
-  font-size: 16px;
+   font-size: clamp(0.9rem, 1.5vw, 1.2rem);;
   transition: background-color 0.3s ease, transform 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -75,10 +91,11 @@ export const Button = styled.button`
     animation: shine 0.5s ease-out forwards;
   }
 
-  @media (max-width: 480px) {
-    padding: 6px 12px;
-    font-size: 14px;
-  }
+ @media (max-width: 480px) {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
 
   @keyframes shine {
     0% {
@@ -115,6 +132,7 @@ font-size:15px;`
 export const Container = styled.div`
   padding: 20px;
   background-color: #fff;
+   border-radius:25px;
 `;
 
 export const Heading = styled.h2`
@@ -123,12 +141,21 @@ export const Heading = styled.h2`
   color: #0056d2;
   margin-bottom: 16px;
 `;
+
 export const CompaniesList = styled.div`
   display: flex;
   gap: 16px;
-  overflow: hidden; /* Prevent scrollbars from showing */
+  overflow: hidden; /* Prevent scrollbars */
   position: relative;
+  width: 100%;
   padding-bottom: 10px;
+
+  /* Duplicate content for seamless scrolling */
+  & > .scroll-content {
+    display: flex;
+    animation: scroll 20s linear infinite; /* Smooth infinite scroll */
+    white-space: nowrap; /* Prevent wrapping */
+  }
 
   /* Keyframe Animation */
   @keyframes scroll {
@@ -136,14 +163,15 @@ export const CompaniesList = styled.div`
       transform: translateX(0);
     }
     100% {
-      transform: translateX(-50%);
+      transform: translateX(-20%); /* Move by half the content's width */
     }
   }
 
-  /* Wrap content and duplicate for seamless scrolling */
-  width: 200%; /* Double the width to accommodate duplicate list */
-  animation: scroll 20s linear infinite;
-  will-change: transform;
+  @media (max-width: 480px) {
+    animation: none; /* Disable animation for smaller screens */
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
   ::-webkit-scrollbar {
     display: none; /* Hide scrollbar */
@@ -203,4 +231,23 @@ export const ScrollToTopButton = styled.button`
     background-color: #055d82;
     
   }
+    @media (max-width: 480px) {
+  bottom: 10px;
+  left: 90%; /* Aligns it closer to the right edge */
+}
+
 `;
+export const Para = styled.p`
+  color: black
+  font-size: 14px;
+  margin-bottom: 8px;
+
+ background-color:green;
+`;
+
+export const NotFoundDiv = styled.div`
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items: center;
+width:  100vw`

@@ -3,38 +3,42 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const ExperienceCard = styled.div`
-  background-color: #ffffff;
+ 
   color: #333333;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
+  
   padding: 15px;
   width: 100%;
   max-width: 300px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 0 auto;
+border-radius: 33px;
+background: linear-gradient(145deg, #cacaca, #f0f0f0);
+box-shadow:  27px 27px 54px #848484,
+             -27px -27px 54px #ffffff;
 
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
   }
+    
 `;
 
 export const Company = styled.h2`
-  color: black;
-  font-size: 20px;
+  font-size: clamp(1.2rem, 2vw, 2.5rem); 
   margin-bottom: 5px;
+  color: #2c3e50;
 `;
 
 export const Role = styled.h4`
+  font-size: clamp(1rem, 1.8vw, 2rem); 
   color: #333333;
-  font-size: 16px;
   margin-bottom: 10px;
 `;
 
 export const Description = styled.p`
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem); 
+  line-height: 1.6;
   color: #555555;
-  font-size: 14px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 `;
 
 export const Date = styled.p`
