@@ -6,9 +6,13 @@ export const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 4px 16px; /* Reduced vertical padding */
-  background-color: #1a1a1a;
-  color: #ffffff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+   background: linear-gradient(
+    to bottom,
+    rgba(200, 230, 250, 1) 0%,
+    rgba(180, 215, 240, 1) 100%
+  );
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adds subtle depth */
+  color:black;
   flex: 1 1;
 
   @media (max-width: 480px) {
@@ -20,8 +24,7 @@ export const Head = styled.div`
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: linear-gradient(135deg, #232526, #414345);
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+  color:black;
   padding: 0;
   transition: background 0.3s ease-in-out;
 
@@ -68,7 +71,7 @@ export const OptionsNavLap = styled.div`
 
 export const Option = styled.h6`
   font-size: 16px;
-  color: #ffffff;
+  color: black;
   cursor: pointer;
   position: relative;
   transition: color 0.3s ease, transform 0.3s ease;
@@ -134,7 +137,7 @@ export const OptionsNav = styled.div`
   flex-direction: column;
   width: 100%;
   gap: 8px;
-
+  background-color:#ffffff;
   &.active {
     display: flex;
   }
@@ -168,11 +171,12 @@ export const Searcher = styled.input`
 
 export const SearcherDiv = styled.div`
   padding: 4px;
-  background-color: #1a1a1a;
+  
   border-radius: 5px;
   display: flex;
   align-items: center;
   gap: 8px;
+  margin-right:8px;
   width: 200px;
 
   @media (max-width: 768px) {

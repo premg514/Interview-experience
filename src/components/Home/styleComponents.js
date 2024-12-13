@@ -243,6 +243,7 @@ export const Para = styled.p`
   margin-bottom: 8px;
 
  background-color:green;
+ border-radius:10px;
 `;
 
 export const NotFoundDiv = styled.div`

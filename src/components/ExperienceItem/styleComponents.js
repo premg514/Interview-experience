@@ -8,12 +8,12 @@ export const ExperienceCard = styled.div`
   
   padding: 15px;
   width: 100%;
-  max-width: 300px;
+  max-width: 250px;
   margin: 0 auto;
-border-radius: 33px;
-background: linear-gradient(145deg, #cacaca, #f0f0f0);
-box-shadow:  27px 27px 54px #848484,
-             -27px -27px 54px #ffffff;
+  border-radius: 33px;
+  background: linear-gradient(145deg, #cacaca, #f0f0f0);
+  box-shadow:  27px 27px 54px #848484,
+              -27px -27px 54px #ffffff;
 
   &:hover {
     transform: translateY(-5px);

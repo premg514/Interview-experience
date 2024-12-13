@@ -7,7 +7,7 @@ import interviewExperiences from '../../Data/experience';
 import companies from '../../Data/companies';
 import { usePaginationContext } from '../../context/PaginationContext';
 import { FaArrowCircleUp } from "react-icons/fa";
-import { Div,AppContainer, Title, ExperienceList, Button, PaginationContainer, PageNumber, LeftArrow, RightArrow, Container, Heading, CompaniesList, Logo, CompanyCard, ScrollToTopButton, Para, NotFoundDiv } from './styleComponents';
+import { Div, AppContainer, Title, ExperienceList, Button, PaginationContainer, PageNumber, LeftArrow, RightArrow, Container, Heading, CompaniesList, Logo, CompanyCard, ScrollToTopButton, Para, NotFoundDiv } from './styleComponents';
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
